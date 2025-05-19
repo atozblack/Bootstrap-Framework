@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example - Preloader Animasi dengan Pagination</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden; /* Mencegah scroll saat preloader aktif */
+    }
+
+    /* Preloader Styling */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #preloader .progress {
+      width: 60%; /* Lebar progress bar container */
+      margin-top: 20px;
+      height: 25px; /* Sedikit lebih tinggi untuk teks persentase */
+    }
+
+    #preloader .progress-bar {
+      /* Teks persentase di dalam progress bar */
+      color: #111111; /* Warna teks agar kontras dengan progress-bar-warning */
+      font-weight: bold;
+      line-height: 25px; /* Sesuaikan dengan tinggi progress bar */
+      font-size: 14px;
+    }
+
+    /* Konten Utama (awalnya disembunyikan) */
+    #main-content {
+      display: none;
+      padding-top: 20px;
+      height: 100%; /* Agar bisa di-scroll jika konten panjang */
+      overflow-y: auto; /* Aktifkan scroll untuk konten utama jika perlu */
+    }
+
+      .bg1 {
+    background: cyan;
+  }
+
+  .bg2 {
+    background: yellow;
+  }
+
+    .bg3 {
+    background: orange;
+  }
+
+  /* Styling untuk konten halaman pagination */
+  .page-content {
+    display: none; /* Sembunyikan semua halaman konten secara default */
+  }
+  .page-content.active {
+    display: block; /* Tampilkan halaman konten yang aktif */
+  }
+  </style>
+</head>
+<body>
+<div id="preloader">
+  <h4>Mohon Tunggu, Memuat Halaman...</h4>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+      <span class="percentage-text">0%</span>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+<div class="container">
+
+  <div id="page1" class="page-content active">
+    <div class="jumbotron">
+      <h1>Selamat Datang! (Halaman 1)</h1>
+      <p>Halaman telah berhasil dimuat sepenuhnya.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Pelajari Lebih Lanjut</a></p>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Option 1</a></li>
+          <li><a href="#">Option 2</a></li>
+          <li><a href="#">Option 3</a></li>
+          <li><a href="#">Option 4</a></li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#expand1">Collapse Panel Halaman 1</a>
+          </h4>
+        </div>
+        <div id="expand1" class="panel-collapse collapse">
+          <ul class="list-group">
+            <li class="list-group-item">Item 1</li>
+            <li class="list-group-item">Item 2</li>
+            <li class="list-group-item">Item 3</li>
+          </ul>
+          <div class="panel-footer">Footer Panel 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page2" class="page-content">
+    <h2>Konten Halaman 2</h2>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#expand2">Collapsible panel Halaman 2</a>
+          </h4>
+        </div>
+        <div id="expand2" class="panel-collapse collapse">
+          <div class="panel-body">Panel Body Halaman 2</div>
+          <div class="panel-footer">Panel Footer Halaman 2</div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#ex1">Collapse Konten Halaman 2</button>
+    <div id="ex1" class="collapse">
+     <div class="row">
+        <div class="col-lg-4 bg1">
+        <h2> My First Bootstrap Web Page 1 (Hal 2)</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit,
+          perspiciatis quas et aspernatur earum sunt autem debitis,
+          odit deleniti veniam necessitatibus aut corrupti facere iusto?
+        </p>
+        </div>
+        <div class="col-lg-4 bg2">
+          <h2> My First Bootstrap Web Page 2 (Hal 2)</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit,
+          perspiciatis quas et aspernatur earum sunt autem debitis,
+          odit deleniti veniam necessitatibus aut corrupti facere iusto?
+        </p>
+        </div>
+          <div class="col-lg-4 bg3">
+          <h2> My First Bootstrap Web Page 3 (Hal 2)</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit,
+          perspiciatis quas et aspernatur earum sunt autem debitis,
+          odit deleniti veniam necessitatibus aut corrupti facere iusto?
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page3" class="page-content">
+    <h2>Konten Halaman 3</h2>
+    <hr />
+    <a href="#ex2" class="btn btn-info" data-toggle="collapse">Simple collapsible Halaman 3</a>
+    <div id="ex2" class="collapse">
+      <h1>Photo Gallery (Halaman 3)</h1>
+      <blockquote>
+        <table class="table table-striped">
+        <thead class="bg1">
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Grade</th>
+              <th>Photo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="danger">
+              <td >John</td>
+              <td >smith</td>
+              <td >80</td>
+              <td> <img class="img-responsive" src="03.jpg" alt="Photo 03" width="150" height="100"> </td> </tr>
+            <tr class="info">
+              <td >Ted</td>
+              <td >Crow</td>
+              <td >90</td>
+               <td> <img class="img-responsive" src="02.jpg" alt="Photo 02" width="150" height="100"> </td> </tr>
+            <tr class="success">
+              <td >Molly</td>
+              <td >Doe</td>
+              <td >93</td>
+               <td> <img class="img-responsive" src="01.jpg" alt="Photo 01" width="150" height="100"> </td> </tr>
+          </tbody>
+        </table>
+          <footer>Molly Grade Highest</footer>
+      </blockquote>
+      <hr />
+    </div>
+  </div>
+
+  <div class="text-center">
+    <ul class="pagination">
+      <li class="active"><a href="#" data-page="1">1</a></li>
+      <li><a href="#" data-page="2">2</a></li>
+      <li><a href="#" data-page="3">3</a></li>
+    </ul>
+  </div>
+
+</div>
+</div>
+    <script>
+$(document).ready(function() {
+    let $progressBar = $('#preloader .progress-bar');
+    let $percentageText = $('#preloader .percentage-text');
+    let currentProgress = 0;
+    let animationTime = 1500; // Durasi total animasi progress bar dalam milidetik (misal: 1.5 detik)
+    let updateInterval = 20;  // Seberapa sering progress diupdate (milidetik)
+
+    let increment = 100 / (animationTime / updateInterval);
+    let progressInterval;
+
+    function updateProgressBar() {
+        currentProgress += increment;
+        if (currentProgress > 100) {
+            currentProgress = 100;
+        }
+
+        $progressBar.css('width', currentProgress + '%').attr('aria-valuenow', currentProgress);
+        $percentageText.text(Math.round(currentProgress) + '%');
+
+        if (currentProgress >= 100) {
+            clearInterval(progressInterval);
+            // Tunggu event window.load untuk menyembunyikan preloader
+        }
+    }
+
+    progressInterval = setInterval(updateProgressBar, updateInterval);
+
+    $(window).on('load', function() {
+        clearInterval(progressInterval);
+        currentProgress = 100;
+        $progressBar.css('width', '100%').attr('aria-valuenow', 100);
+        $percentageText.text('100%');
+
+        setTimeout(function() {
+          $('#preloader').fadeOut('slow', function() {
+            $('body').css('overflow', 'auto');
+          });
+          $('#main-content').fadeIn('slow');
+          // Secara default tampilkan halaman 1 setelah preloader selesai
+          $('#page1').addClass('active').show();
+        }, 400);
+    });
+
+    // Pagination Logic
+    $('.pagination li a').on('click', function(e) {
+        e.preventDefault(); // Mencegah link default action
+
+        let targetPage = $(this).data('page');
+
+        // Hapus kelas 'active' dari semua link pagination dan item halaman
+        $('.pagination li').removeClass('active');
+        $('.page-content').removeClass('active').hide();
+
+        // Tambah kelas 'active' ke link yang diklik dan tampilkan halaman yang sesuai
+        $(this).parent().addClass('active');
+        $('#page' + targetPage).addClass('active').fadeIn('fast'); // atau .show() jika tidak ingin animasi
+    });
+
+    // Pastikan ID untuk collapse unik jika ada duplikasi
+    // Contoh: jika ada beberapa panel dengan id="expand", ubah menjadi id="expand1", id="expand2", dst.
+    // dan sesuaikan juga atribut href atau data-target pada elemen pemicunya.
+    // Pada kode di atas, saya sudah mengubah #expand menjadi #expand1 dan #expand2
+});
+</script>
+
+</body>
+</html>
