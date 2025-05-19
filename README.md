@@ -11,6 +11,7 @@ Index :
 4. tables
 5. images
 6. pageheader
+7. alerts
 
 In Typography.html
 
