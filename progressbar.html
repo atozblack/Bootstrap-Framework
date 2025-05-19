@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example - Preloader Animasi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden; /* Mencegah scroll saat preloader aktif */
+    }
+
+    /* Preloader Styling */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #preloader .progress {
+      width: 60%; /* Lebar progress bar container */
+      margin-top: 20px;
+      height: 25px; /* Sedikit lebih tinggi untuk teks persentase */
+    }
+
+    #preloader .progress-bar {
+      /* Teks persentase di dalam progress bar */
+      color: #111111; /* Warna teks agar kontras dengan progress-bar-warning */
+      font-weight: bold;
+      line-height: 25px; /* Sesuaikan dengan tinggi progress bar */
+      font-size: 14px;
+    }
+    
+    /* Styling untuk progress bar agar animasinya aktif (garis-garis bergerak) */
+    /* Bootstrap 3.3.5 sudah menangani .active untuk animasi stripe */
+
+
+    /* Konten Utama (awalnya disembunyikan) */
+    #main-content {
+      display: none;
+      padding-top: 20px;
+      height: 100%; /* Agar bisa di-scroll jika konten panjang */
+      overflow-y: auto; /* Aktifkan scroll untuk konten utama jika perlu */
+    }
+
+      .bg1 {
+    background: cyan;
+  }
+
+  .bg2 {
+    background: yellow;
+  }
+
+    .bg3 {
+    background: orange;
+  }
+  </style>
+</head>
+<body>
+
+<div id="preloader">
+  <h4>Mohon Tunggu, Memuat Halaman...</h4>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" 
+         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+      <span class="percentage-text">0%</span>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Selamat Datang!</h1>
+      <p>Halaman telah berhasil dimuat sepenuhnya.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Pelajari Lebih Lanjut</a></p>
+    </div>
+
+    <h2>Glyphicons</h2>
+
+	<p>Envelope: <span class="glyphicon glyphicon-envelope"></span></p>    
+
+	<p>Search: <span class="glyphicon glyphicon-search"></span></p>
+	
+	<p>Heart: <span class="glyphicon glyphicon-heart"></span></p>
+	
+	<p>Star: <span class="glyphicon glyphicon-star-empty"></span></p>
+
+	<button type="button" class="btn btn-default">
+		<span class="glyphicon glyphicon-search"></span> Search
+	</button>
+
+
+	<button type="button" class="btn btn-warning">
+		<span class="glyphicon glyphicon-search"></span> Search
+	</button>
+
+	<p>Print: <span class="glyphicon glyphicon-print"></span></p>      
+
+	<a href="#" class="btn btn-success btn-lg">
+		<span class="glyphicon glyphicon-print"></span> Print 
+	</a>
+
+
+<div class="row">
+  <div class="col-lg-4 bg1">
+  <h2> My First Bootstrap Web Page 1</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit, 
+    perspiciatis quas et aspernatur earum sunt autem debitis, 
+    odit deleniti veniam necessitatibus aut corrupti facere iusto?
+  </p>
+  </div>
+  <div class="col-lg-4 bg2">
+    <h2> My First Bootstrap Web Page 2</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit, 
+    perspiciatis quas et aspernatur earum sunt autem debitis, 
+    odit deleniti veniam necessitatibus aut corrupti facere iusto?
+  </p>
+  </div>
+    <div class="col-lg-4 bg3">
+    <h2> My First Bootstrap Web Page 2</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita pariatur, praesentium dolorum suscipit, 
+    perspiciatis quas et aspernatur earum sunt autem debitis, 
+    odit deleniti veniam necessitatibus aut corrupti facere iusto?
+  </p>
+
+  </div>
+  </div>
+  
+  	<h4>Badges</h4>
+	<a href="#">Members <span class="badge">8</span></a><br>
+	<a href="#">Messages <span class="badge">5</span></a><br>
+	<a href="#">New Users <span class="badge">7</span></a>
+
+	<hr />
+	<button type="button" class="btn btn-primary">Primary <span class="badge">10</span></button>
+  
+	<hr />
+	<h1>Example <span class="label label-primary">New</span></h1>
+	<h2>Example <span class="label label-warning">New</span></h2>
+	<h3>Example <span class="label label-danger">New</span></h3>
+	<h4>Example <span class="label label-info">New</span></h4>
+
+
+
+	<hr />
+	<span class="label label-default">Default</span>
+	<span class="label label-primary">Primary</span>
+	<span class="label label-success">Success</span>
+	<span class="label label-info">Info</span>
+	<span class="label label-warning">Warning</span>
+	<span class="label label-danger">Danger</span>
+
+  </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+    let $progressBar = $('#preloader .progress-bar');
+    let $percentageText = $('#preloader .percentage-text');
+    let currentProgress = 0;
+    let animationTime = 1500; // Durasi total animasi progress bar dalam milidetik (misal: 1.5 detik)
+    let updateInterval = 20;  // Seberapa sering progress diupdate (milidetik)
+    
+    // Hitung berapa banyak kenaikan per interval untuk mencapai 100% dalam animationTime
+    let increment = 100 / (animationTime / updateInterval);
+    let progressInterval;
+
+    function updateProgressBar() {
+        currentProgress += increment;
+        if (currentProgress > 100) {
+            currentProgress = 100;
+        }
+        
+        $progressBar.css('width', currentProgress + '%').attr('aria-valuenow', currentProgress);
+        $percentageText.text(Math.round(currentProgress) + '%');
+
+        if (currentProgress >= 100) {
+            clearInterval(progressInterval);
+            // Tunggu event window.load untuk menyembunyikan preloader
+        }
+    }
+
+    // Mulai animasi progress bar segera
+    progressInterval = setInterval(updateProgressBar, updateInterval);
+
+    $(window).on('load', function() {
+        // Pastikan interval dihentikan jika belum
+        clearInterval(progressInterval);
+        
+        // Pastikan progress bar menunjukkan 100%
+        currentProgress = 100;
+        $progressBar.css('width', '100%').attr('aria-valuenow', 100);
+        $percentageText.text('100%');
+
+        // Beri sedikit jeda setelah progress bar mencapai 100% sebelum fade out
+        setTimeout(function() {
+          $('#preloader').fadeOut('slow', function() {
+            // Setelah preloader hilang, kembalikan kemampuan scroll ke body
+            $('body').css('overflow', 'auto');
+            // Optional: Hapus preloader dari DOM
+            // $(this).remove(); 
+          });
+          $('#main-content').fadeIn('slow');
+        }, 400); // Jeda 400 milidetik
+    });
+});
+</script>
+
+</body>
+</html>
