@@ -13,6 +13,7 @@ Index :
 6. pageheader
 7. alerts
 8. button
+9. progressbar
 
 In Typography.html
 
@@ -94,3 +95,91 @@ This Code :
 
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+In Progressbar.html
+
+This Code : 
+
+ /* Preloader Styling */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #preloader .progress {
+      width: 60%; /* progress bar container */
+      margin-top: 20px;
+      height: 25px; /* progress bar height*/
+    }
+
+    #preloader .progress-bar {
+      /* progress bar text percentage */
+      color: #111111; /* color of  */
+      font-weight: bold;
+      line-height: 25px; /* height progress bar */
+      font-size: 14px;
+    }
+
+    <script>
+$(document).ready(function() {
+    let $progressBar = $('#preloader .progress-bar');
+    let $percentageText = $('#preloader .percentage-text');
+    let currentProgress = 0;
+    let animationTime = 1500; // Total duration of the progress bar animation in milliseconds (e.g., 1.5 seconds)
+    let updateInterval = 20;  // How often the progress is updated (milliseconds)
+    
+    // Calculate how much to increment per interval to reach 100% within animationTime
+    let increment = 100 / (animationTime / updateInterval);
+    let progressInterval;
+
+    function updateProgressBar() {
+        currentProgress += increment;
+        if (currentProgress > 100) {
+            currentProgress = 100;
+        }
+        
+        $progressBar.css('width', currentProgress + '%').attr('aria-valuenow', currentProgress);
+        $percentageText.text(Math.round(currentProgress) + '%');
+
+        if (currentProgress >= 100) {
+            clearInterval(progressInterval);
+            // Wait for the window.load event to hide the preloader
+        }
+    }
+
+    // Start the progress bar animation immediately
+    progressInterval = setInterval(updateProgressBar, updateInterval);
+
+    $(window).on('load', function() {
+        // Ensure the interval is cleared if it hasn't been already
+        clearInterval(progressInterval);
+        
+        // Ensure the progress bar shows 100%
+        currentProgress = 100;
+        $progressBar.css('width', '100%').attr('aria-valuenow', 100);
+        $percentageText.text('100%');
+
+        // Give a slight delay after the progress bar reaches 100% before fading out
+        setTimeout(function() {
+          $('#preloader').fadeOut('slow', function() {
+            // After the preloader disappears, restore scrollability to the body
+            $('body').css('overflow', 'auto');
+            // Optional: Remove the preloader from the DOM
+            // $(this).remove(); 
+          });
+          $('#main-content').fadeIn('slow');
+        }, 400); // 400 millisecond delay
+    });
+});
+</script>
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
