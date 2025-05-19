@@ -12,6 +12,7 @@ Index :
 5. images
 6. pageheader
 7. alerts
+8. button
 
 In Typography.html
 
